@@ -19,11 +19,13 @@ def sanitize_filename(filename):
 def download_video(url, choice):
     """Download video or audio and save correctly in 'downloads' folder"""
     ydl_opts = {
-        'outtmpl': f'{DOWNLOAD_FOLDER}/%(title)s.%(ext)s',  # Save in downloads folder
-        'noplaylist': True,  # Avoid downloading entire playlists
-        'quiet': True,  # Suppress console output
-        'noprogress': True,  # Hide progress bar for better performance
-    }
+    'outtmpl': f'{DOWNLOAD_FOLDER}/%(title)s.%(ext)s',
+    'noplaylist': True,
+    'quiet': True,
+    'noprogress': True,
+    'cookies-from-browser': 'chrome',  # Replace with your browser (chrome, firefox, edge)
+}
+
 
     if choice == "audio":
         ydl_opts["format"] = "bestaudio[ext=m4a]/bestaudio"  # Best quality audio (M4A)
